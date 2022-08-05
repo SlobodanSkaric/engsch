@@ -1,0 +1,19 @@
+{
+    "name": "slobodan/app-engsch",
+    "description": "This is eng school application",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Slobodan Skaric",
+            "email": "slobodan.skaric@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "AppSch\\" : ""
+        }
+    }
+}
