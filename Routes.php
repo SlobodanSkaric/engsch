@@ -1,5 +1,5 @@
 <?php 
 
 return [
-    \AppSch\Core\RouteCheck::get("|^.*$|", "MainController", "index")
+    \AppSch\Core\RouteCheck::get("|^.*$|", "Main", "index")
 ];

@@ -19,12 +19,17 @@ foreach($routes as $route){
 
 $findRoute = $router->findRoute($url,$method);
 
-print_r($findRoute);
+$controlleName = "\\AppSch\\Controller\\" . $findRoute->getController() . "Controller";
+$controllerInsatnce = new $controlleName($dbConnection);
 
-/*$loader = new \Twig\Loader\FilesystemLoader("./views");
+$methodName = $findRoute->getMethod();
+$args =  [];
+call_user_func_array([$controllerInsatnce, $methodName],$args);
+$data = $controllerInsatnce->getData();
+$loader = new \Twig\Loader\FilesystemLoader("./views");
 $twig   =  new \Twig\Environment($loader, [
     "cache" => "./twig_cache",
     "auto_reload" => true
 ]);
 
-echo $twig->render();*/
+echo $twig->render($findRoute->getController() . "/" . $findRoute->getMethod() . ".html", $data);
