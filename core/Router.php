@@ -9,7 +9,7 @@ class Router{
         $this->route[] = $route;
     }
 
-    public function findRoute(string $url, string $urlMethod):RouteCheck{
+    public function findRoute(string $url, string $urlMethod){
         foreach($this->route as $rout){
             if($rout->metchControllerAndModel($url,$urlMethod)){
                 return $rout;

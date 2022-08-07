@@ -10,6 +10,8 @@ $dbConnection = DBConnection::getConnection();
 $url    = filter_input(INPUT_GET, "URL");
 $method = filter_input(INPUT_SERVER, "REQUEST_METHOD");
 
+if($url == null) $url = "";
+
 $routes = require_once("Routes.php");
 $router = new Router();
 
