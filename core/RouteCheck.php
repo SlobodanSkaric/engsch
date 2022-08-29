@@ -44,4 +44,12 @@ class RouteCheck{
     public function getMethod(){
         return $this->method;
     }
+
+    public function getArguments($url){
+        $match = [];
+
+        preg_match($this->pattern, $url, $match);
+
+        return $match[1];
+    }
 }
