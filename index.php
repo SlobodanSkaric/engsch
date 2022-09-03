@@ -26,6 +26,7 @@ $controllerInsatnce = new $controlleName($dbConnection);
 
 $methodName = $findRoute->getMethod();
 $args =  [];
+
 call_user_func_array([$controllerInsatnce, $methodName],$args);
 $data = $controllerInsatnce->getData();
 $loader = new \Twig\Loader\FilesystemLoader("./views");

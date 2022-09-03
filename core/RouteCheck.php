@@ -26,7 +26,7 @@ class RouteCheck{
     }
 
     public function metchControllerAndModel(string $url,string $urlMethod):bool{
-        if(!preg_match("/^{$this->pattern}$/", $url)){
+        if(!preg_match($this->pattern, $url)){
             return false;
         }
 
