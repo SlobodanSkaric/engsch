@@ -26,6 +26,6 @@ class StringValidator implements Validator{
     public function isValid(string $value): bool{
         $valueLen = strlen($value);
 
-        return boolval($valueLen < $this->minNum || $valueLen > $this->maxNum);
+        return boolval($valueLen > $this->minNum && $valueLen < $this->maxNum);
     }
 }

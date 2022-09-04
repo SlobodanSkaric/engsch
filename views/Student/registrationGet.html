@@ -2,38 +2,38 @@
 
 {% block mina %}
     <div class="row">
-        <div class="d-flex justify-content-center">
+        <div class="col-md-6 text-bg-danger offset-md-3 d-flex justify-content-center regtitle">
             <h1>Registration</h1>
         </div>
     </div>
-    <form action="" method="POST">
+    <form action="" method="POST" class="formset col-md-6 offset-md-3">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <label for="name" class="pb-3 pt-3 ps-1">Name</label>
+                <label for="name" class="pb-3 pt-3 ">Name</label>
                 <input type="text" id="name" class="form-control" name="name">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <label for="lastName" class="pb-3 pt-3 ps-1">Last Name</label>
+                <label for="lastName" class="pb-3 pt-3 ">Last Name</label>
                 <input type="text" id="lastName" class="form-control" name="lastName">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <label for="email" class="pb-3 pt-3 ps-1">Email</label>
+                <label for="email" class="pb-3 pt-3 ">Email</label>
                 <input type="email" id="email" class="form-control" name="email">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <label for="phone" class="pb-3 pt-3 ps-1">Phone Number</label>
+                <label for="phone" class="pb-3 pt-3 ">Phone Number</label>
                 <input type="text" id="phone" class="form-control" name="phone">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <label for="password" class="pb-3 pt-3 ps-1">Password</label>
+                <label for="password" class="pb-3 pt-3 ">Password</label>
                 <input type="password" id="password" class="form-control" name="password">
             </div>
         </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="row">
             <div class="d-flex justify-content-center pb-3 pt-3 ">
-                <button type="submit" class="btn btn-primary">Registration</button>
+                <button type="submit" class="btn btn-danger">Registration</button>
             </div>
         </div>
     </form>
