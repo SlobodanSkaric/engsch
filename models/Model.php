@@ -30,7 +30,54 @@ abstract class Model{
         return $tableName;
     }
 
-    public function checkFildsList($data){
+    final public function getAll(){
+        $table = $this->getTableName();
+
+        $sql = "SELECT * FROM {$table}";
+        $prep = $this->getConnection()->prepare($sql);
+        $exe = $prep->execute();
+        $res = [];
+
+        if($exe){
+            $res = $prep->fetchAll(\PDO::FETCH_OBJ);
+        }
+
+        return $res;
+    }
+
+    final public function getFildName($fildname, $value){
+        $this->isFildeValide($fildname, $value);
+        $table = $this->getTableName();
+
+        $sql = "SELECT * FROM {$table} WHERE {$fildname}=?";
+        $prep = $this->getConnection()->prepare($sql);
+        $exc = $prep->execute([$value]);
+        $res = NULL;
+
+        if($exc){
+            $res = $prep->fetch(\PDO::FETCH_OBJ);
+        }
+
+        return $res;
+
+    }
+
+    final public function  isFildeValide($field, $value){
+        $suportedField = $this->getFields();
+        $suportedKey = array_keys($suportedField);
+
+        if(!in_array($field, $suportedKey)){
+            return false;
+        }
+
+        if(!$suportedField[$field]->isValid($value)){
+            return false;
+        }
+
+        return true;
+    }
+
+    final public function checkFildsList($data){
         $fildList = $this->getFields();
 
         $supFieldNames = array_keys($fildList);
@@ -51,7 +98,7 @@ abstract class Model{
         }
     }
 
-    public function add($data){
+    final public function add($data){
         $this->checkFildsList($data);
         $table = $this->getTableName();
 
@@ -61,9 +108,9 @@ abstract class Model{
 
         $sql  = "INSERT INTO {$table} ({$dataImlode}) VALUES ({$questionmarksub})";
         $prep = $this->getConnection()->prepare($sql);
-        $res = $prep->execute(array_values($data));
+        $exe = $prep->execute(array_values($data));
         
-        if(!$res){
+        if(!$exe){
             return false;
         }
 

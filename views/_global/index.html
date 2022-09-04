@@ -18,8 +18,14 @@
                 <div class="row">
                     <div class="col">Item1</div>
                     <div class="col">Item1</div>
+                    {% if messageses == false %}
                     <div class="col"><a href="/engsch/user/registration">Register</a></div>
                     <div class="col"><a href="/engsch/user/login">Login</a></div>
+                    {% endif %}
+                    {% if messageses != false %}
+                    <div class="col"><a href="/engsch/user/logout">Logout</a></div>
+                    <div class="col">{{ messageses }}</div>
+                    {% endif  %}
                 </div>
             </div>
         </div>
@@ -27,7 +33,7 @@
     </nav>
     <main class="container mt-3 pt-3">
         {% block mina %}
-
+            {{ message }}
         {% endblock %}
     </main>
 </body>

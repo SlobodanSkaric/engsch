@@ -5,6 +5,7 @@ use AppSch\Validators\StringValidator;
 use AppSch\Models\StudentModel;
 use Exception;
 
+session_start();
 class StudentController extends Controller{
     public function registrationGet(){
         $model = new StudentModel($this->getConnection());
@@ -28,19 +29,16 @@ class StudentController extends Controller{
             return;
         }
 
-      /*  if($stringValidator->isValid($name)){
-            $this->setResultData("message", "Your name must be longer then three characters");
-            return;
-        }
-
-        if($stringValidator->isValid($lastName)){
-            $this->setResultData("message", "Your last name must be longer then three characters");
-            return;
-        }*/
-
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         $studentModel = new StudentModel($this->getConnection());
+        $checkStudentEmailExiste = $studentModel->getFildName("email", $email);
+
+        if($checkStudentEmailExiste){
+            $this->setResultData("message", "User with this eamil already exists");
+            return;
+        }
+
         try{
             $add = $studentModel->add([
                 "name"        => $name,
@@ -56,8 +54,41 @@ class StudentController extends Controller{
         }catch(Exception $e){
             $this->setResultData("message", "Please chekc your data. Error: " . $e->getMessage());
         }
-        
+    }
+
+    public function loginGet(){
+
+    }
+
+    public function loginPost(){
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+
+        $studentModel = new StudentModel($this->getConnection());
+        $existeEmail = $studentModel->getFildName("email", $email);
+
+        if(!$existeEmail){
+            $this->setResultData("message", "This email not exists");
+            return;
+        }
+
+        $passwordHash = $existeEmail->password;
+
+        if(!password_verify($password,$passwordHash)){
+            $this->setResultData("message", "Password is not valid");
+            return;
+        }
 
         
+        $_SESSION["student"] = $existeEmail->name;
+
+        $this->setResultData("message", $existeEmail->name);
+
+        $this->redirect("/engsch/user/");
+    }
+
+    public function logoutGet(){
+        $this->logout();
+        $this->redirect("/engsch/user/");
     }
 }

@@ -8,6 +8,8 @@ class Controller{
     private  $connection;
     private $data = [];
 
+    
+
     public function __construct($dbc){
         $this->connection = $dbc;
     }
@@ -24,5 +26,16 @@ class Controller{
 
     public function getData(){
         return $this->data;
+    }
+
+    protected function redirect($path){
+        ob_clean();
+        header("Location:".$path);
+        exit;
+    }
+
+    protected function logout(){
+        session_unset();
+        session_destroy();
     }
 }

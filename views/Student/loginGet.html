@@ -1,0 +1,28 @@
+{% extends "_global/index.html" %}
+
+{% block mina %}
+    <div class="row">
+        <div class="col-md-6 text-bg-danger offset-md-3 d-flex justify-content-center regtitle">
+            <h1>Login</h1>
+        </div>
+    </div>
+    <form action="" method="POST" class="formset col-md-6 offset-md-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="email" class="pb-3 pt-3 ">Email</label>
+                <input type="email" id="email" class="form-control" name="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="password" class="pb-3 pt-3 ">Password</label>
+                <input type="password" id="password" class="form-control" name="password">
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-flex justify-content-center pb-3 pt-3 ">
+                <button type="submit" class="btn btn-danger">Login</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

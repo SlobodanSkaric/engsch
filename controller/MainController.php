@@ -1,10 +1,11 @@
 <?php 
 
 namespace AppSch\Controller;
-
+session_start();
 class MainController extends Controller{
 
     public function index(){
-        $this->setResultData("exempledata", "This is example text");
+        $student = $_SESSION["student"] ?? false;
+        $this->setResultData("messageses", $student);
     }
 }
