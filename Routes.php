@@ -6,5 +6,7 @@ return [
     \AppSch\Core\RouteCheck::get("|^user/login/?$|"            , "Student", "loginGet"),
     \AppSch\Core\RouteCheck::post("|^user/login/?$|"           , "Student", "loginPost"),
     \AppSch\Core\RouteCheck::get("|^user/logout/?$|"           , "Student", "logoutGet"),
+
+    \AppSch\Core\RouteCheck::get("|^user/studentprofile/?$|"   , "Student", "profileGet"),
     \AppSch\Core\RouteCheck::get("|^.*$|", "Main", "index")
 ];
