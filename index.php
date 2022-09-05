@@ -29,10 +29,12 @@ $args =  [];
 
 call_user_func_array([$controllerInsatnce, $methodName],$args);
 $data = $controllerInsatnce->getData();
+
 $loader = new \Twig\Loader\FilesystemLoader("./views");
 $twig   =  new \Twig\Environment($loader, [
     "cache" => "./twig_cache",
     "auto_reload" => true
 ]);
+$twig->addGlobal('session', $_SESSION);
 
 echo $twig->render($findRoute->getController() . "/" . $findRoute->getMethod() . ".html", $data);

@@ -84,9 +84,20 @@ class StudentController extends Controller{
 
         $this->setResultData("message", $existeEmail->name);
 
-        $this->redirect("/engsch/user/");
+        $this->redirect("/engsch/user/studentprofile");
     }
 
+    public function profileGet(){
+        $studentName = $_SESSION["student"] ?? false;
+        setcookie("sudentname", $studentName, time() + (86400 * 30), "/");
+        
+        if($studentName != false){
+            $this->setResultData("message", $studentName);
+            return;
+        }
+
+        $this->setResultData("message", "Try again login");
+    }
     public function logoutGet(){
         $this->logout();
         $this->redirect("/engsch/user/");
