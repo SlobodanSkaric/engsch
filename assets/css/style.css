@@ -1,11 +1,20 @@
+.picbg{
+    background-image: url("/engsch/assets/img/eng1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .news-div{
     background-color: rgba(215, 81, 81, 0.751);
     color: white;
 }
 
 .formset{
-    /*background-color:  rgba(183, 7, 7, 0.547);
-    color: #fff;*/
+    background-color:  rgba(183, 7, 7, 0.619);
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
 .regtitle{
