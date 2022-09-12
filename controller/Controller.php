@@ -18,7 +18,7 @@ class Controller{
         return $this->connection;
     }
 
-    public function setResultData(string $name, string $value):void{
+    public function setResultData(string $name,  $value):void{
         if(preg_match("|^[a-z][a-zA-Z0-9]+$|",$name)){
             $this->data[$name] = $value;
         }

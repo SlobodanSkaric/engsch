@@ -9,6 +9,8 @@ class DBConfiguration{
     private string $dbname;
     private string $utf;
 
+    
+
     public function __construct(string $hostname, string $username, string $password, string $dbname){
         $this->setHostname($hostname);
         $this->setUsername($username);

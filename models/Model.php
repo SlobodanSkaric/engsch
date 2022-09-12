@@ -46,19 +46,38 @@ abstract class Model{
     }
 
     final public function getFildName($fildname, $value){
-        $this->isFildeValide($fildname, $value);
+        if(!$this->isFildeValide($fildname, $value)){
+            new Exception("Invalid file name: " . $fildname);
+        }
         $table = $this->getTableName();
 
-        $sql = "SELECT * FROM {$table} WHERE {$fildname}=?";
+        $sql = "SELECT * FROM " . $table . " WHERE " . $fildname . "=?";
         $prep = $this->getConnection()->prepare($sql);
         $exc = $prep->execute([$value]);
         $res = NULL;
-
         if($exc){
             $res = $prep->fetch(\PDO::FETCH_OBJ);
         }
 
-        return $res;
+       return $res;
+
+    }
+
+    final public function getAllFildName($fildname, $value){
+        if(!$this->isFildeValide($fildname, $value)){
+            new Exception("Invalid file name: " . $fildname);
+        }
+        $table = $this->getTableName();
+        
+        $sql = "SELECT * FROM " . $table . " WHERE " . $fildname . "=?";
+        $prep = $this->getConnection()->prepare($sql);
+        $exc = $prep->execute([$value]);
+        $res = [];
+        if($exc){
+            $res = $prep->fetchAll(\PDO::FETCH_OBJ);
+        }
+
+       return $res;
 
     }
 
@@ -115,5 +134,27 @@ abstract class Model{
         }
 
         return true;
+    }
+
+    final function edit($id, $data){
+        $this->checkFildsList($data);
+        $tableName = $this->getTableName();
+
+        $editList = [];
+        $valueList = [];
+
+        foreach($data as $dat => $value){
+            $editList[] = "{$dat}=?";
+            $valueList[] = $value;
+        }
+
+        $editString = implode(", ", $editList);
+        $valueList[] = $id;
+
+        $sql = "UPDATE {$tableName} SET {$editString} WHERE {$tableName}_id=?";
+        $prepare = $this->getConnection()->prepare($sql);
+        $exe = $prepare->execute($valueList);
+
+        return $exe;
     }
 }

@@ -2,8 +2,11 @@
 
 include_once ("vendor/autoload.php");
 
+use AppSch\Core\ApiController;
 use AppSch\Core\DBConnection;
 use AppSch\Core\Router;
+
+ob_start();
 
 $dbConnection = DBConnection::getConnection();
 
@@ -24,11 +27,18 @@ $findRoute = $router->findRoute($url,$method);
 $controlleName = "\\AppSch\\Controller\\" . $findRoute->getController() . "Controller";
 $controllerInsatnce = new $controlleName($dbConnection);
 
-$methodName = $findRoute->getMethod();
-$args =  [];
 
-call_user_func_array([$controllerInsatnce, $methodName],$args);
-$data = $controllerInsatnce->getData();
+$args =  $findRoute->getArguments($url);
+call_user_func_array([$controllerInsatnce, $findRoute->getMethod()],$args);
+(object)$data = $controllerInsatnce->getData();
+
+if($controllerInsatnce instanceof ApiController){
+    ob_clean();
+    header("Content-type: application/json; charset=utf-8");
+    header("Access-Control-Allow-Origin: *");
+    echo json_encode($data);
+    exit;
+}
 
 $loader = new \Twig\Loader\FilesystemLoader("./views");
 $twig   =  new \Twig\Environment($loader, [

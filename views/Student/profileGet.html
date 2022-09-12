@@ -1,5 +1,33 @@
 {% extends "_global/index.html" %}
 
 {% block mina %}
-    <div>Student profile</div>
+<div class="row">
+    <div class="col-md-6 text-bg-danger offset-md-3 d-flex justify-content-center regtitle">
+        <h1>Please enter your phone number</h1>
+    </div>
+</div>
+<div class="row">
+    <div  class="formset col-md-6 offset-md-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div for="email" class="pb-3 pt-3 " ><h6>Hello {{ message }}, please enter your phone number.
+                    This is action is necessary when you log in for the first time.</h6>
+                    <input type="number" value="{{ student }}" id="person">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="email" class="pb-3 pt-3 ">Phone number</label>
+                <input type="text" id="phonenumber" class="form-control" name="phones">
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-flex justify-content-center pb-3 pt-3 ">
+                <button type="submit" class="btn btn-danger" id="sendphone">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/engsch/assets/js/loginApi.js"></script>
 {% endblock %}

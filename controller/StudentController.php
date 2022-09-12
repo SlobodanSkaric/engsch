@@ -4,6 +4,7 @@ namespace AppSch\Controller;
 use AppSch\Validators\StringValidator;
 use AppSch\Models\StudentModel;
 use Exception;
+use AppSch\Models\GroupschModel;
 
 session_start();
 class StudentController extends Controller{
@@ -16,12 +17,13 @@ class StudentController extends Controller{
         $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
         $lastName = filter_input(INPUT_POST, "lastName", FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-        $phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING);
+        $group = filter_input(INPUT_POST, "group", FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
         $passwordag = filter_input(INPUT_POST, "passwordag", FILTER_SANITIZE_STRING);
 
         $approvedDefault = 1;
 
+        
         $stringValidator = (new StringValidator())->setMin(3)->setMax(30);
 
         if($password != $passwordag){
@@ -31,11 +33,20 @@ class StudentController extends Controller{
 
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        $studentModel = new StudentModel($this->getConnection());
+       $studentModel = new StudentModel($this->getConnection());
         $checkStudentEmailExiste = $studentModel->getFildName("email", $email);
 
         if($checkStudentEmailExiste){
             $this->setResultData("message", "User with this eamil already exists");
+            return;
+        }
+        
+        $groupModel = new GroupschModel($this->getConnection());
+        $groupResult = $groupModel->getFildName("groupname", $group);
+        $grouId = $groupResult->group_id ?? "";
+
+        if(!$groupResult){
+            $this->setResultData("message", "Please slect group");
             return;
         }
 
@@ -44,7 +55,7 @@ class StudentController extends Controller{
                 "name"        => $name,
                 "lastname"    => $lastName,
                 "email"       => $email,
-                "phonenumber" => $phone,
+                "teach_group"    => $grouId,
                 "password"    => $passwordHash,
                 "approved"    => $approvedDefault,
             ]);
@@ -84,15 +95,19 @@ class StudentController extends Controller{
 
         $this->setResultData("message", $existeEmail->name);
 
-        $this->redirect("/engsch/user/studentprofile");
+        $this->redirect("/engsch/user/studentprofile/".$existeEmail->student_id);
     }
 
-    public function profileGet(){
+    public function profileGet($id){
         $studentName = $_SESSION["student"] ?? false;
         setcookie("sudentname", $studentName, time() + (86400 * 30), "/");
-        
-        if($studentName != false){
-            $this->setResultData("message", $studentName);
+
+        $studentModel = new StudentModel($this->getConnection());
+        $student = $studentModel->getFildName("student_id", $id);
+       // print_r($student);exit;
+        if($student ){
+            $this->setResultData("name", $studentName);
+            $this->setResultData("student", $id);
             return;
         }
 
@@ -102,4 +117,5 @@ class StudentController extends Controller{
         $this->logout();
         $this->redirect("/engsch/user/");
     }
+
 }

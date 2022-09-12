@@ -6,49 +6,55 @@
             <h1>Registration</h1>
         </div>
     </div>
-    <div class="row">
-        <form action="" method="POST" class="formset col-md-6 offset-md-3">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <label for="name" class="pb-3 pt-3 ">Name</label>
-                    <input type="text" id="name" class="form-control" name="name">
-                </div>
+    <form action="" method="POST" class="formset col-md-6 offset-md-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="name" class="pb-3 pt-3 ">Name</label>
+                <input type="text" id="name" class="form-control" name="name">
             </div>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <label for="lastName" class="pb-3 pt-3 ">Last Name</label>
-                    <input type="text" id="lastName" class="form-control" name="lastName">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="lastName" class="pb-3 pt-3 ">Last Name</label>
+                <input type="text" id="lastName" class="form-control" name="lastName">
             </div>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <label for="email" class="pb-3 pt-3 ">Email</label>
-                    <input type="email" id="email" class="form-control" name="email">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="email" class="pb-3 pt-3 ">Email</label>
+                <input type="email" id="email" class="form-control" name="email">
             </div>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <label for="phone" class="pb-3 pt-3 ">Phone Number</label>
-                    <input type="text" id="phone" class="form-control" name="phone">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="phone" class="pb-3 pt-3 ">Select group</label>
+                <select name="group" class="form-select" required>
+                    <option selected>Please select your group</option>
+                    <option value="g1">G1</option>
+                    <option value="g2">G2</option>
+                    <option value="g3">G3</option>
+                    <option value="g4">G4</option>
+                    <option value="g5">G5</option>
+                    <option value="g6">G6</option>
+                </select>
             </div>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <label for="password" class="pb-3 pt-3 ">Password</label>
-                    <input type="password" id="password" class="form-control" name="password">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="password" class="pb-3 pt-3 ">Password</label>
+                <input type="password" id="password" class="form-control" name="password">
             </div>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <label for="passwordag" class="pb-3 pt-3 ps-1">Password Again</label>
-                    <input type="password" id="passwordag" class="form-control" name="passwordag">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="passwordag" class="pb-3 pt-3 ps-1">Password Again</label>
+                <input type="password" id="passwordag" class="form-control" name="passwordag">
             </div>
-            <div class="row">
-                <div class="d-flex justify-content-center pb-3 pt-3 ">
-                    <button type="submit" class="btn btn-danger">Registration</button>
-                </div>
+        </div>
+        <div class="row">
+            <div class="d-flex justify-content-center pb-3 pt-3 ">
+                <button type="submit" class="btn btn-danger">Registration</button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 {% endblock %}

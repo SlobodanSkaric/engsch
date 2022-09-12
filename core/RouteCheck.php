@@ -45,11 +45,21 @@ class RouteCheck{
         return $this->method;
     }
 
-    public function getArguments($url){
-        $match = [];
+    public function &getArguments($url){
+        
+        $arguments = [];
+        $matchs = [];
+        preg_match_all($this->pattern, $url, $matchs);
+        //print_r($matchs);
+        //print_r($matchs);
+       if(isset($matchs[1])){
+          //$arguments = $matchs[1];     
+          array_push($arguments, implode("", $matchs[1]));     
+          if(isset($matchs[2])){
+            array_push($arguments, implode("", $matchs[2]));     
+          }  
+       }
 
-        preg_match($this->pattern, $url, $match);
-
-        return $match[1];
+       return $arguments;
     }
 }
