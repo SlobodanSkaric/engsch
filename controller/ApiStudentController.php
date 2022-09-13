@@ -18,5 +18,7 @@ class ApiStudentController extends ApiController{
         $student = $student->edit($studentId,[
             "phonenumber" => $phoneNumber
         ]);
+
+        $this->setResultData("student", "update");
     }
 }

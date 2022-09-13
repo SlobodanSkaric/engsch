@@ -12,7 +12,7 @@
             <div class="col-md-6 offset-md-3">
                 <div for="email" class="pb-3 pt-3 " ><h6>Hello {{ message }}, please enter your phone number.
                     This is action is necessary when you log in for the first time.</h6>
-                    <input type="number" value="{{ student }}" id="person">
+                    <input type="hidden" value="{{ student }}" id="person">
                 </div>
             </div>
         </div>
@@ -28,6 +28,11 @@
             </div>
         </div>
     </div>
+    <div class="phoneupdate mt-3" id="update">
+        <h1>Phone is Update</h1>
+        <p id="red">Go Your profile</p>
+    </div>
 </div>
+
 <script src="/engsch/assets/js/loginApi.js"></script>
 {% endblock %}

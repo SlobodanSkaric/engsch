@@ -92,10 +92,17 @@ class StudentController extends Controller{
 
         
         $_SESSION["student"] = $existeEmail->name;
+        $_SESSION["student_email"] = $existeEmail->eamil;
+        $_SESSION["student_id"] = $existeEmail->student_id;
 
         $this->setResultData("message", $existeEmail->name);
 
-        $this->redirect("/engsch/user/studentprofile/".$existeEmail->student_id);
+        if($existeEmail->phonenumber === null){
+            $this->redirect("/engsch/user/studentprofile/".$existeEmail->student_id);
+            return;
+        }
+
+        $this->redirect("/engsch/user/studentprofiles/".$existeEmail->student_id);
     }
 
     public function profileGet($id){
@@ -113,6 +120,7 @@ class StudentController extends Controller{
 
         $this->setResultData("message", "Try again login");
     }
+
     public function logoutGet(){
         $this->logout();
         $this->redirect("/engsch/user/");

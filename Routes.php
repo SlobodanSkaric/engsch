@@ -9,6 +9,7 @@ return [
 
     #student
     \AppSch\Core\RouteCheck::get("|^user/studentprofile/([0-9]+)/?$|"   , "Student", "profileGet"),
+    \AppSch\Core\RouteCheck::get("|^user/studentprofiles/([0-9]+)/?$|"  , "StudentProfile", "profileGetSuccess"),
 
     #profesor
     \AppSch\Core\RouteCheck::get("|^user/profesotprofile/?$|"          , "Profesor", "profileGet"),
