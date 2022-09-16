@@ -1,5 +1,146 @@
 {% extends "_global/index.html" %}
 
 {% block mina %}
-    <h1>Wellcome {{ student }} in your profile</h1>
+    <div class="row student">
+        <div class="row text-center studenttitle">
+            <div class="col">{{ studentName }} {{ studentLastname }}</div>
+        </div>
+        <div class="row">
+            <div class="col col-md-3  col-sm-12 text-center pic">
+                <img src="/engsch/assets/img/profilepic.jfif" alt="" class="pic">
+            </div>
+            <div class="col col-md-9 col-sm-12">
+                <div class="row">
+                    <div class="col col-md-3 col-sm-6">
+                        <div class="card">
+                            <h5 class="card-header">Info</h5>
+                            <div class="card-body">
+                                <p class="card-text">This is place for you</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6">
+                        <div class="card">
+                            <h5 class="card-header">Calendar</h5>
+                            <div class="card-body">
+                                <p class="card-text">Your activity</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6">
+                        <div class="card">
+                            <h5 class="card-header">Message</h5>
+                            <div class="card-body">
+                                <p class="card-text">Conversation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6">
+                        <div class="card">
+                            <h5 class="card-header">Video</h5>
+                            <div class="card-body">
+                                <p class="card-text">Video conference</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm studtable">
+                        <thead>
+                            <tr >
+                                <td>#</td>
+                                <td>Monday</td>
+                                <td>Tuesday</td>
+                                <td>Wednesday</td>
+                                <td>Thursday</td>
+                                <td>Friday</td>
+                                <td>Saturday</td>
+                                <td>Sunday</td>
+                            </tr>
+                        </thead>
+                       <tbody>
+                            <tr >
+                                <td>1</td>
+                                <td>English1</td>
+                                <td>English2</td>
+                                <td>English3</td>
+                                <td>English4</td>
+                                <td>English5</td>
+                                <td>English6</td>
+                                <td>English7</td>
+                            </tr>
+                            <tr >
+                                <td>2</td>
+                                <td>English1</td>
+                                <td>English2</td>
+                                <td>English3</td>
+                                <td>English4</td>
+                                <td>English5</td>
+                                <td>English6</td>
+                                <td>English7</td>
+                            </tr>
+                            <tr >
+                                <td>2</td>
+                                <td>English1</td>
+                                <td>English2</td>
+                                <td>English3</td>
+                                <td>English4</td>
+                                <td>English5</td>
+                                <td>English6</td>
+                                <td>English7</td>
+                            </tr>
+                            <tr >
+                                <td>3</td>
+                                <td>English1</td>
+                                <td>English2</td>
+                                <td>English3</td>
+                                <td>English4</td>
+                                <td>English5</td>
+                                <td>English6</td>
+                                <td>English7</td>
+                            </tr>
+                            <tr >
+                                <td>4</td>
+                                <td>English1</td>
+                                <td>English2</td>
+                                <td>English3</td>
+                                <td>English4</td>
+                                <td>English5</td>
+                                <td>English6</td>
+                                <td>English7</td>
+                            </tr>
+                            <tr >
+                                <td>5</td>
+                                <td>English1</td>
+                                <td>English2</td>
+                                <td>English3</td>
+                                <td>English4</td>
+                                <td>English5</td>
+                                <td>English6</td>
+                                <td>English7</td>
+                            </tr>
+                            <tr >
+                                <td>6</td>
+                                <td>English1</td>
+                                <td>English2</td>
+                                <td>English3</td>
+                                <td>English4</td>
+                                <td>English5</td>
+                                <td>English6</td>
+                                <td>English7</td>
+                            </tr>
+                       </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row"></div>
+    </div>
+    <script src="/engsch/assets/js/studentProfile.js"></script>
 {% endblock %}

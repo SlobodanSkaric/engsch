@@ -91,9 +91,9 @@ class StudentController extends Controller{
         }
 
         
-        $_SESSION["student"] = $existeEmail->name;
-        $_SESSION["student_email"] = $existeEmail->eamil;
-        $_SESSION["student_id"] = $existeEmail->student_id;
+        $_SESSION["student"]       = $existeEmail->name;
+        $_SESSION["student_email"] = $existeEmail->email;
+        $_SESSION["student_id"]    = $existeEmail->student_id;
 
         $this->setResultData("message", $existeEmail->name);
 
@@ -111,8 +111,8 @@ class StudentController extends Controller{
 
         $studentModel = new StudentModel($this->getConnection());
         $student = $studentModel->getFildName("student_id", $id);
-       // print_r($student);exit;
-        if($student ){
+        
+        if($student){
             $this->setResultData("name", $studentName);
             $this->setResultData("student", $id);
             return;
@@ -120,6 +120,8 @@ class StudentController extends Controller{
 
         $this->setResultData("message", "Try again login");
     }
+
+    //run when call api student
 
     public function logoutGet(){
         $this->logout();

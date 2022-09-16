@@ -34,3 +34,30 @@
     
     margin-top: 10px;
 }
+
+.student{
+    background-image: url("/engsch/assets/img/bg1.jfif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.studenttitle{
+    font-size: 30px;
+    font-weight: 900px;
+    color: #fff;
+    padding: 10px 0px;
+}
+
+.studtable  tr  td{
+    color: #fff;
+}
+
+.studtable thead td{
+    font-size: 18px;
+}
+
+.pic{
+    border-radius: 50%;
+}

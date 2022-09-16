@@ -8,11 +8,11 @@ session_start();
 class StudentProfileController extends Controller{
     public function profileGetSuccess($id){
         $studentModel = new StudentModel($this->getConnection());
-        $studentId = $_SESSION["student_id"];
-        $student = $studentModel->getFildName("student_id", $studentId);
+        $student = $studentModel->getFildName("student_id", $id);
 
         if($student->email == $_SESSION["student_email"]){
-            $this->getData("student", $student->name);
+            $this->setResultData("studentName", "{$student->name}");
+            $this->setResultData("studentLastname", "{$student->lastname}");
         }
     }
 }
