@@ -5,9 +5,7 @@ include_once ("vendor/autoload.php");
 use AppSch\Core\ApiController;
 use AppSch\Core\DBConnection;
 use AppSch\Core\Router;
-
 ob_start();
-
 $dbConnection = DBConnection::getConnection();
 
 $url    = filter_input(INPUT_GET, "URL");
@@ -30,8 +28,9 @@ $controllerInsatnce = new $controlleName($dbConnection);
 
 $args =  $findRoute->getArguments($url);
 call_user_func_array([$controllerInsatnce, $findRoute->getMethod()],$args);
-(object)$data = $controllerInsatnce->getData();
 
+(object)$data = $controllerInsatnce->getData();
+$controllerInsatnce->_pre();
 if($controllerInsatnce instanceof ApiController){
     ob_clean();
     header("Content-type: application/json; charset=utf-8");

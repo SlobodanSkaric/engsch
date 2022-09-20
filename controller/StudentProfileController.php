@@ -2,10 +2,12 @@
 
 namespace AppSch\Controller;
 
-use Collator;
+use AppSch\Core\Role\StudentRole;
 use AppSch\Models\StudentModel;
+
 session_start();
-class StudentProfileController extends Controller{
+
+class StudentProfileController extends StudentRole{
     public function profileGetSuccess($id){
         $studentModel = new StudentModel($this->getConnection());
         $student = $studentModel->getFildName("student_id", $id);

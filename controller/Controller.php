@@ -28,6 +28,10 @@ class Controller{
         return $this->data;
     }
 
+    public function _pre(){
+        
+    }
+
     protected function redirect($path){
         ob_clean();
         header("Location:".$path);

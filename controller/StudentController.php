@@ -1,6 +1,7 @@
 <?php 
 
 namespace AppSch\Controller;
+
 use AppSch\Validators\StringValidator;
 use AppSch\Models\StudentModel;
 use Exception;
