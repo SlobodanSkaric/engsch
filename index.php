@@ -1,4 +1,5 @@
 <?php 
+use AppSch\Core\Fingerprint\FingerprintFactory;
 
 include_once ("vendor/autoload.php");
 
@@ -6,7 +7,18 @@ use AppSch\Core\ApiController;
 use AppSch\Core\DBConnection;
 use AppSch\Core\Router;
 ob_start();
+session_start();
 $dbConnection = DBConnection::getConnection();
+
+if(isset($_SESSION["fingerprint"])){
+    $fingerprintFactory = new FingerprintFactory();
+    $fingerprintInstance = $fingerprintFactory->getInstance("SERVER");
+    $fingerprint = $fingerprintInstance->fingerprint();
+
+    if("www" != $_SESSION["fingerprint"]){
+        echo "<script>alert('Session hj')</script>";//in this place implement js alert and redirect
+    }
+}
 
 $url    = filter_input(INPUT_GET, "URL");
 $method = filter_input(INPUT_SERVER, "REQUEST_METHOD");

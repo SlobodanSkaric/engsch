@@ -6,8 +6,6 @@ use AppSch\Validators\StringValidator;
 use AppSch\Models\StudentModel;
 use Exception;
 use AppSch\Models\GroupschModel;
-
-session_start();
 class StudentController extends Controller{
     public function registrationGet(){
         $model = new StudentModel($this->getConnection());

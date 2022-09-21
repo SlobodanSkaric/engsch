@@ -1,7 +1,6 @@
 <?php 
 
 namespace AppSch\Controller;
-session_start();
 class MainController extends Controller{
 
     public function index(){
