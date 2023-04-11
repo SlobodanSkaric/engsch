@@ -15,7 +15,7 @@ if(isset($_SESSION["fingerprint"])){
     $fingerprintInstance = $fingerprintFactory->getInstance("SERVER");
     $fingerprint = $fingerprintInstance->fingerprint();
 
-    if("www" != $_SESSION["fingerprint"]){
+    if($fingerprint != $_SESSION["fingerprint"]){
         echo "<script>alert('Session hj')</script>";//in this place implement js alert and redirect
     }
 }
@@ -42,7 +42,9 @@ $args =  $findRoute->getArguments($url);
 call_user_func_array([$controllerInsatnce, $findRoute->getMethod()],$args);
 
 (object)$data = $controllerInsatnce->getData();
+
 $controllerInsatnce->_pre();
+
 if($controllerInsatnce instanceof ApiController){
     ob_clean();
     header("Content-type: application/json; charset=utf-8");
